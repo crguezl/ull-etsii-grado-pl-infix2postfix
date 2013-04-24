@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>scope</title>
+    <link rel="stylesheet" href="global.css" type="text/css" media="screen" charset="utf-8" />
+  </head>
+  <body>
+    <h1>Infix to Postfix Translator with Functions</h1>
+    <div id="content">
+      <script src="jquery/jquery.js"></script> 
+      <script src="calculator.js"></script>
+      <script src="main.js"></script>
+
+      <p>
+      Load an example:
+      <input type="file" id="examples" />
+      </p>
+
+      <p>
+      <table>
+        <tr>
+          <td>
+            <textarea id="input" autofocus cols = "40" rows = "15">
+var c = 4, d = 1, e;
+def f(x) { 
+  var y = 1;
+  x + y 
+}
+def g(a, b) { 
+  var d, e;
+  def f(u, v) { a + u + v + d }
+  a * f(b, 2) + d + c 
+}
+c = 3;
+f(1+c);
+g(3, 4)
+            </textarea> 
+          </td>
+          <td class="output">
+            <pre>
+<span id="output">
+</span> <!-- Output goes here! -->
+            </pre>
+          </td>
+          <td><button id="eval" type="button">eval</button></td>
+        </tr>
+      </table>
+      </p>
+    </div>
+  </body>
+</html>
+
