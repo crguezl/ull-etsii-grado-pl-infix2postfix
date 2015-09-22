@@ -109,6 +109,7 @@ function initializations(symbolTable) {
 prog
     : decs statements EOF
         { 
+          return $decs.join(',');
         }
     ;
 
@@ -121,20 +122,23 @@ dec
     : DEF functionname  optparameters "{" decs statements "}" 
                   { 
                   }
-    | VAR varlist ';'   { 
+    | VAR varlist ';'   {  $$ = $varlist.join(','); 
                         }
     ;
 
 varlist 
-    : optinitialization                    { }
-    | varlist ',' optinitialization        { }
+    : optinitialization               { $$ = [ $1 ]; }
+    | varlist ',' optinitialization   { $$ = $1; $$.push($3); }
     ;
 
 optinitialization
-    : ID          {
+    : ID          {  symbolTable.vars[$ID] = { type:  "VAR", initial_value: null };
+                     $$ = $1;
                   }
     | ID '=' e 
-                  {
+                  { 
+                    symbolTable.vars[$ID] = { type:  "VAR", initial_value: $e };
+                    $$ = $1;
                   }
     ;
 
